@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — OrbitalData</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/faq.css" />
+</head>
+<body>
+
+  <div class="stars-bg"></div>
+
+  <div class="page-wrapper">
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="../assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
+        <span>Orbital<em>Data</em></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="integrantes.html">Integrantes</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
+        <a href="dashboard.html" class="btn-nav">Dashboard</a>
+      </div>
+    </nav>
+
+    <!-- ══ HERO ══ -->
+    <div class="faq-hero fade-up">
+      <div class="section-eyebrow" style="justify-content:center;">// PERGUNTAS FREQUENTES</div>
+      <h1 class="section-title">Como podemos<br><span style="color:var(--blue-bright)">te ajudar?</span></h1>
+      <p class="section-subtitle" style="margin:0 auto;">
+        Tire suas dúvidas sobre a plataforma, os dados satelitais e como usar o OrbitalData.
+      </p>
+    </div>
+
+    <!-- ══ BUSCA ══ -->
+    <div class="faq-search-wrap fade-up delay-1">
+      <div class="faq-search">
+        <span class="icon">🔍</span>
+        <input type="text" id="faq-search-input" placeholder="Buscar pergunta..." />
+      </div>
+    </div>
+
+    <!-- ══ CATEGORIAS ══ -->
+    <div class="faq-cats fade-up delay-2">
+      <button class="faq-cat-btn active" data-cat="all">Todas</button>
+      <button class="faq-cat-btn" data-cat="plataforma">Plataforma</button>
+      <button class="faq-cat-btn" data-cat="dados">Dados</button>
+      <button class="faq-cat-btn" data-cat="satelites">Satélites</button>
+      <button class="faq-cat-btn" data-cat="carbono">Carbono</button>
+      <button class="faq-cat-btn" data-cat="acesso">Acesso</button>
+    </div>
+
+    <!-- ══ FAQ LIST ══ -->
+    <div class="faq-list" id="faq-list">
+
+      <!-- Plataforma -->
+      <div class="faq-item" data-cat="plataforma">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">01</span>
+            <span class="faq-q-text">O que é o OrbitalData?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>O OrbitalData é uma plataforma de análise climática e monitoramento de carbono que utiliza dados abertos de satélites da NASA e ESA. Nossa missão é democratizar o acesso a informações científicas complexas, tornando-as acessíveis para empresas, governos e pesquisadores.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="plataforma">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">02</span>
+            <span class="faq-q-text">A plataforma é gratuita?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim! O OrbitalData é completamente gratuito para pesquisadores, estudantes e órgãos governamentais. Para empresas que precisam de relatórios avançados e integração via API, oferecemos planos pagos com suporte dedicado.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="plataforma">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">03</span>
+            <span class="faq-q-text">Preciso criar uma conta para usar?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Não é necessário criar conta para visualizar os dados públicos do dashboard e do mapa. Para recursos avançados como exportação de relatórios, alertas personalizados e histórico de dados, é necessário criar uma conta gratuita.</p>
+        </div>
+      </div>
+
+      <!-- Dados -->
+      <div class="faq-item" data-cat="dados">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">04</span>
+            <span class="faq-q-text">De onde vêm os dados exibidos?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Os dados são provenientes de fontes científicas abertas e confiáveis, incluindo: <strong>NASA Earthdata</strong> (satélites Aqua e Terra), <strong>ESA Copernicus</strong> (Sentinel-3 e Sentinel-5P), <strong>INPE</strong> (desmatamento e queimadas no Brasil), <strong>NOAA</strong> (dados climáticos históricos) e o <strong>Global Carbon Project</strong> (emissões globais de CO₂).</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="dados">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">05</span>
+            <span class="faq-q-text">Com que frequência os dados são atualizados?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>A maioria dos dados é atualizada a cada 90 minutos, que é o tempo médio de uma órbita completa dos satélites de observação terrestre. Dados de temperatura e CO₂ são atualizados a cada 6 horas. Alertas de queimadas são processados em tempo real assim que detectados.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="dados">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">06</span>
+            <span class="faq-q-text">Posso exportar os dados para análise?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim! Na página de <a href="relatorios.html">Relatórios</a> você pode exportar dados em formato CSV, JSON e PDF. Os relatórios incluem séries históricas, médias mensais e comparativos regionais. Para exportações em massa via API, entre em <a href="contato.html">contato</a>.</p>
+        </div>
+      </div>
+
+      <!-- Satélites -->
+      <div class="faq-item" data-cat="satelites">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">07</span>
+            <span class="faq-q-text">Quais satélites o OrbitalData monitora?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Monitoramos os principais satélites de observação ambiental: <strong>NASA Aqua</strong> e <strong>Terra</strong> (temperatura e vegetação), <strong>ESA Sentinel-5P</strong> (qualidade do ar e gases), <strong>ESA Sentinel-3</strong> (temperatura oceânica), e <strong>INPE Amazonia-1</strong> (desmatamento). No total, mais de 847 satélites são rastreados na plataforma.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="satelites">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">08</span>
+            <span class="faq-q-text">O que significa o status do satélite?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p><strong style="color:var(--green)">ONLINE</strong> — satélite operando normalmente e enviando dados. <strong style="color:var(--amber)">ALERTA</strong> — satélite com comunicação intermitente ou manutenção programada. <strong style="color:var(--red)">OFFLINE</strong> — satélite temporariamente fora de operação. O ping indica a latência da última comunicação recebida.</p>
+        </div>
+      </div>
+
+      <!-- Carbono -->
+      <div class="faq-item" data-cat="carbono">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">09</span>
+            <span class="faq-q-text">O que é o índice de CO₂ em ppm?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>PPM significa <em>partes por milhão</em> — é a unidade de medida da concentração de CO₂ na atmosfera. O nível pré-industrial era de ~280 ppm. Atualmente estamos em torno de 421 ppm, um aumento de 50% causado principalmente pela queima de combustíveis fósseis. O Acordo de Paris tenta limitar o aquecimento a 1.5°C, o que exigiria estabilizar o CO₂ em ~430 ppm.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="carbono">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">10</span>
+            <span class="faq-q-text">Como o satélite mede o carbono?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Os satélites usam espectroscopia de absorção infravermelha. Cada gás (CO₂, CH₄, N₂O) absorve luz em comprimentos de onda específicos. O satélite mede quanta luz solar é absorvida pela atmosfera e, a partir disso, calcula a concentração de cada gás com precisão de 1-2 ppm.</p>
+        </div>
+      </div>
+
+      <!-- Acesso -->
+      <div class="faq-item" data-cat="acesso">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">11</span>
+            <span class="faq-q-text">O OrbitalData funciona em dispositivos móveis?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim! A plataforma é totalmente responsiva e funciona em smartphones, tablets e desktops. Para a melhor experiência com os mapas interativos e gráficos detalhados, recomendamos o uso em telas maiores.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="acesso">
+        <div class="faq-question">
+          <div class="faq-q-left">
+            <span class="faq-num">12</span>
+            <span class="faq-q-text">Como reportar um problema ou sugerir melhorias?</span>
+          </div>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Você pode entrar em contato pela nossa <a href="contato.html">página de contato</a> ou abrir uma issue diretamente no nosso <a href="https://github.com/yasminmatsuok/OrbitalData-" target="_blank">repositório no GitHub</a>. Adoramos receber feedback da comunidade!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ CTA ══ -->
+    <div class="faq-cta fade-up">
+      <div class="faq-cta-card">
+        <h3>Ainda tem dúvidas?</h3>
+        <p>Nossa equipe está pronta para te ajudar com qualquer questão sobre a plataforma.</p>
+        <div class="faq-cta-actions">
+          <a href="contato.html" class="btn btn-primary">✉️ Falar com a equipe</a>
+          <a href="sobre.html" class="btn btn-secondary">📖 Ler sobre o projeto</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <script src="../js/main.js"></script>
+  <script src="../js/faq.js"></script>
+</body>
+</html>

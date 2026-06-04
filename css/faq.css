@@ -1,0 +1,170 @@
+/* =============================================
+   ORBITALDATA — FAQ
+   ============================================= */
+
+/* ── Hero ── */
+.faq-hero {
+  padding: 7rem 2rem 3rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Search ── */
+.faq-search-wrap {
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+}
+.faq-search {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  transition: border-color var(--transition);
+}
+.faq-search:focus-within { border-color: var(--border-glow); }
+.faq-search input {
+  background: none; border: none; outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  flex: 1;
+  width: 100%;
+}
+.faq-search input::placeholder { color: var(--text-muted); }
+.faq-search .icon { color: var(--text-muted); font-size: 1rem; flex-shrink: 0; }
+
+/* ── Categorias ── */
+.faq-cats {
+  display: flex; justify-content: center; gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  padding: 0 2rem;
+}
+.faq-cat-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--panel);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.faq-cat-btn:hover { border-color: var(--border-glow); color: var(--blue-bright); }
+.faq-cat-btn.active {
+  background: rgba(58, 123, 213, 0.12);
+  border-color: rgba(58, 123, 213, 0.4);
+  color: var(--blue-bright);
+}
+
+/* ── FAQ list ── */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ── FAQ item ── */
+.faq-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+.faq-item:hover { border-color: var(--border-glow); }
+.faq-item.open { border-color: rgba(58, 123, 213, 0.35); }
+
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+.faq-q-text {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  flex: 1;
+}
+.faq-q-left {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.faq-num {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--blue-bright);
+  flex-shrink: 0;
+  min-width: 28px;
+}
+.faq-arrow {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+.faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--blue-bright); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.25rem;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding: 0 1.25rem 1.1rem;
+}
+.faq-answer p {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.faq-answer a {
+  color: var(--blue-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Ainda tem dúvidas? ── */
+.faq-cta {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+.faq-cta-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(30,45,107,0.2) 0%, transparent 70%),
+              var(--panel);
+}
+.faq-cta-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+.faq-cta-card p {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+.faq-cta-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="assets/orbitaldata.png" />
   <title>OrbitalData — Análise Climática via Satélite</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/navbar.css" />
@@ -12,41 +11,31 @@
 </head>
 <body>
 
-  <!-- Fundo estrelado -->
   <div class="stars-bg"></div>
 
   <div class="page-wrapper">
 
-    <!-- ══════════════════════════════════════
-         NAVBAR
-    ══════════════════════════════════════ -->
+    <!-- ══ NAVBAR ══ -->
     <nav class="navbar">
       <div class="nav-logo">
         <img src="assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
         <span>Orbital<em>Data</em></span>
       </div>
-
       <ul class="nav-links">
         <li><a href="index.html" class="active">Início</a></li>
         <li><a href="pages/dashboard.html">Dashboard</a></li>
-        <li><a href="pages/mapa.html">Mapa</a></li>
-        <li><a href="pages/alertas.html">Alertas</a></li>
-        <li><a href="pages/satelites.html">Satélites</a></li>
-        <li><a href="pages/relatorios.html">Relatórios</a></li>
+        <li><a href="pages/sobre.html">Sobre</a></li>
+        <li><a href="pages/integrantes.html">Integrantes</a></li>
+        <li><a href="pages/faq.html">FAQ</a></li>
+        <li><a href="pages/contato.html">Contato</a></li>
       </ul>
-
       <div class="nav-actions">
-        <div class="nav-badge">
-          <span class="dot"></span>
-          AO VIVO
-        </div>
+        <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
         <a href="pages/dashboard.html" class="btn-nav">Acessar Plataforma</a>
       </div>
     </nav>
 
-    <!-- ══════════════════════════════════════
-         HERO
-    ══════════════════════════════════════ -->
+    <!-- ══ HERO ══ -->
     <section class="hero">
       <div class="hero-glow"></div>
 
@@ -66,12 +55,8 @@
         </p>
 
         <div class="hero-actions">
-          <a href="pages/dashboard.html" class="btn btn-primary">
-            🛰️ Acessar Dashboard
-          </a>
-          <a href="pages/mapa.html" class="btn btn-secondary">
-            🗺️ Ver Mapa
-          </a>
+          <a href="pages/dashboard.html" class="btn btn-primary">🛰️ Acessar Dashboard</a>
+          <a href="pages/sobre.html" class="btn btn-secondary">📖 Saiba Mais</a>
         </div>
 
         <div class="hero-stats">
@@ -84,84 +69,66 @@
             <div class="hero-stat-label">Leituras / Dia</div>
           </div>
           <div>
-            <div class="hero-stat-val magenta">196</div>
+            <div class="hero-stat-val galaxy">196</div>
             <div class="hero-stat-label">Países Cobertos</div>
           </div>
         </div>
       </div>
 
-      <!-- Animação de órbita decorativa -->
+      <!-- Globo animado -->
       <div class="hero-orbit-viz fade-in delay-3">
         <svg viewBox="0 0 400 400" width="420" height="420" xmlns="http://www.w3.org/2000/svg">
-          <!-- Terra -->
           <circle cx="200" cy="200" r="70" fill="url(#earthGrad)" />
           <circle cx="200" cy="200" r="70" fill="url(#cloudGrad)" opacity="0.3" />
-
-          <!-- Órbitas -->
           <ellipse cx="200" cy="200" rx="130" ry="50" fill="none"
-            stroke="rgba(0,195,255,0.2)" stroke-width="1" stroke-dasharray="4 6"
+            stroke="rgba(58,123,213,0.25)" stroke-width="1" stroke-dasharray="4 6"
             transform="rotate(-20 200 200)" />
           <ellipse cx="200" cy="200" rx="160" ry="60" fill="none"
-            stroke="rgba(0,255,157,0.15)" stroke-width="1" stroke-dasharray="3 8"
+            stroke="rgba(90,154,232,0.18)" stroke-width="1" stroke-dasharray="3 8"
             transform="rotate(30 200 200)" />
           <ellipse cx="200" cy="200" rx="185" ry="70" fill="none"
-            stroke="rgba(0,195,255,0.1)" stroke-width="1" stroke-dasharray="5 10"
+            stroke="rgba(58,123,213,0.12)" stroke-width="1" stroke-dasharray="5 10"
             transform="rotate(-50 200 200)" />
-
-          <!-- Satélite 1 -->
           <g id="sat1">
-            <rect x="-6" y="-3" width="12" height="6" rx="1"
-              fill="#00c3ff" opacity="0.9" />
-            <rect x="-14" y="-1" width="8" height="2" rx="1" fill="#00c3ff" opacity="0.6" />
-            <rect x="6" y="-1" width="8" height="2" rx="1" fill="#00c3ff" opacity="0.6" />
+            <rect x="-6" y="-3" width="12" height="6" rx="1" fill="#5a9ae8" opacity="0.9" />
+            <rect x="-14" y="-1" width="8" height="2" rx="1" fill="#5a9ae8" opacity="0.6" />
+            <rect x="6" y="-1" width="8" height="2" rx="1" fill="#5a9ae8" opacity="0.6" />
             <circle cx="0" cy="0" r="2" fill="white" opacity="0.9" />
           </g>
-
-          <!-- Satélite 2 -->
           <g id="sat2">
-            <rect x="-5" y="-2.5" width="10" height="5" rx="1"
-              fill="#00ff9d" opacity="0.9" />
-            <rect x="-12" y="-1" width="7" height="2" rx="1" fill="#00ff9d" opacity="0.6" />
-            <rect x="5" y="-1" width="7" height="2" rx="1" fill="#00ff9d" opacity="0.6" />
+            <rect x="-5" y="-2.5" width="10" height="5" rx="1" fill="#00e5a0" opacity="0.9" />
+            <rect x="-12" y="-1" width="7" height="2" rx="1" fill="#00e5a0" opacity="0.6" />
+            <rect x="5" y="-1" width="7" height="2" rx="1" fill="#00e5a0" opacity="0.6" />
           </g>
-
-          <!-- Ponto de dados -->
           <circle cx="200" cy="130" r="3" fill="#ffb830" opacity="0.8">
             <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
           </circle>
-          <circle cx="240" cy="170" r="2" fill="#00c3ff" opacity="0.6">
+          <circle cx="240" cy="170" r="2" fill="#5a9ae8" opacity="0.6">
             <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite" />
           </circle>
           <circle cx="165" cy="220" r="2.5" fill="#ff4560" opacity="0.7">
             <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite" />
           </circle>
-
           <defs>
             <radialGradient id="earthGrad" cx="40%" cy="40%">
-              <stop offset="0%" stop-color="#1a6b9a" />
-              <stop offset="50%" stop-color="#0d4a6b" />
-              <stop offset="100%" stop-color="#041428" />
+              <stop offset="0%" stop-color="#1a5a8a" />
+              <stop offset="50%" stop-color="#0d3a5a" />
+              <stop offset="100%" stop-color="#041020" />
             </radialGradient>
             <radialGradient id="cloudGrad" cx="60%" cy="30%">
               <stop offset="0%" stop-color="rgba(255,255,255,0.4)" />
               <stop offset="100%" stop-color="transparent" />
             </radialGradient>
           </defs>
-
-          <!-- Animações dos satélites -->
-          <animateTransform attributeName="transform" type="rotate"
-            values="0 200 200;360 200 200" dur="12s" repeatCount="indefinite"
-            xlink:href="#sat1" />
-          <animateTransform attributeName="transform" type="rotate"
-            values="180 200 200;-180 200 200" dur="18s" repeatCount="indefinite"
-            xlink:href="#sat2" />
+          <animateTransform xlink:href="#sat1" attributeName="transform" type="rotate"
+            values="0 200 200;360 200 200" dur="12s" repeatCount="indefinite" />
+          <animateTransform xlink:href="#sat2" attributeName="transform" type="rotate"
+            values="180 200 200;-180 200 200" dur="18s" repeatCount="indefinite" />
         </svg>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         PROBLEMA QUE RESOLVE
-    ══════════════════════════════════════ -->
+    <!-- ══ PROBLEMA ══ -->
     <section class="section-block">
       <div class="section-inner">
         <div class="section-eyebrow">O Problema</div>
@@ -170,8 +137,7 @@
           O Brasil e o mundo precisam monitorar emissões de carbono e impactos climáticos
           em tempo real. As ferramentas existentes são complexas e inacessíveis para a maioria.
         </p>
-
-        <div class="problem-grid mt-2">
+        <div class="problem-grid">
           <div class="problem-card">
             <div class="problem-icon">🌡️</div>
             <h3>Dados fragmentados</h3>
@@ -196,81 +162,57 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         FEATURES
-    ══════════════════════════════════════ -->
+    <!-- ══ FEATURES ══ -->
     <section class="section-block section-dark">
       <div class="section-inner">
         <div class="section-eyebrow">Funcionalidades</div>
         <h2 class="section-title">Tudo que você precisa</h2>
-
         <div class="grid-3 mt-2">
           <div class="feature-card fade-up delay-1">
             <div class="feature-icon">🛰️</div>
             <h3 class="feature-title">Dados Satelitais</h3>
-            <p class="feature-desc">
-              Integração com satélites NASA Aqua, Terra e ESA Sentinel.
-              Leituras a cada 90 minutos de qualquer ponto do planeta.
-            </p>
+            <p class="feature-desc">Integração com satélites NASA Aqua, Terra e ESA Sentinel. Leituras a cada 90 minutos de qualquer ponto do planeta.</p>
           </div>
           <div class="feature-card fade-up delay-2">
             <div class="feature-icon">🌿</div>
             <h3 class="feature-title">Carbono em Tempo Real</h3>
-            <p class="feature-desc">
-              Monitoramento de CO₂, CH₄ e N₂O com alertas automáticos
-              quando limites críticos são atingidos.
-            </p>
+            <p class="feature-desc">Monitoramento de CO₂, CH₄ e N₂O com alertas automáticos quando limites críticos são atingidos.</p>
           </div>
           <div class="feature-card fade-up delay-3">
             <div class="feature-icon">🗺️</div>
             <h3 class="feature-title">Mapa Interativo</h3>
-            <p class="feature-desc">
-              Visualize os dados climáticos sobre o mapa do Brasil
-              por estado, bioma ou área personalizada.
-            </p>
+            <p class="feature-desc">Visualize os dados climáticos sobre o mapa do Brasil por estado, bioma ou área personalizada.</p>
           </div>
           <div class="feature-card fade-up delay-1">
             <div class="feature-icon">⚠️</div>
             <h3 class="feature-title">Alertas Inteligentes</h3>
-            <p class="feature-desc">
-              Sistema de notificações para anomalias climáticas, queimadas,
-              derretimento de geleiras e eventos extremos.
-            </p>
+            <p class="feature-desc">Sistema de notificações para anomalias climáticas, queimadas, derretimento de geleiras e eventos extremos.</p>
           </div>
           <div class="feature-card fade-up delay-2">
             <div class="feature-icon">📊</div>
             <h3 class="feature-title">Relatórios Automáticos</h3>
-            <p class="feature-desc">
-              Gere relatórios de conformidade ESG e carbono com um clique,
-              prontos para apresentar a investidores ou governo.
-            </p>
+            <p class="feature-desc">Gere relatórios de conformidade ESG e carbono com um clique, prontos para apresentar a investidores ou governo.</p>
           </div>
           <div class="feature-card fade-up delay-3">
             <div class="feature-icon">🤖</div>
             <h3 class="feature-title">IA Preditiva</h3>
-            <p class="feature-desc">
-              Modelos de machine learning preveem tendências climáticas
-              com até 30 dias de antecedência para sua região.
-            </p>
+            <p class="feature-desc">Modelos de machine learning preveem tendências climáticas com até 30 dias de antecedência para sua região.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         QUEM USA
-    ══════════════════════════════════════ -->
+    <!-- ══ PÚBLICO ══ -->
     <section class="section-block">
       <div class="section-inner">
         <div class="section-eyebrow">Público-Alvo</div>
         <h2 class="section-title">Para quem é o OrbitalData?</h2>
-
-        <div class="audience-grid mt-2">
+        <div class="audience-grid">
           <div class="audience-card">
             <div class="audience-icon">🏭</div>
             <h3>Empresas</h3>
             <p>Monitore sua pegada de carbono e comprove metas ESG com dados verificáveis por satélite.</p>
-            <span class="badge badge-cyan">ESG & Compliance</span>
+            <span class="badge badge-blue">ESG & Compliance</span>
           </div>
           <div class="audience-card">
             <div class="audience-icon">🏛️</div>
@@ -282,35 +224,30 @@
             <div class="audience-icon">🔬</div>
             <h3>Pesquisadores</h3>
             <p>Acesse séries históricas de dados climáticos e exporte para análise científica.</p>
-            <span class="badge badge-mag">Ciência & Dados</span>
+            <span class="badge badge-navy">Ciência & Dados</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         CTA FINAL
-    ══════════════════════════════════════ -->
+    <!-- ══ CTA ══ -->
     <section class="section-block cta-section">
       <div class="section-inner text-center">
         <div class="section-eyebrow" style="justify-content:center;">Comece agora</div>
         <h2 class="section-title" style="margin:0 auto 1rem;">
           O espaço está monitorando.<br>
-          <span class="text-cyan">E você?</span>
+          <span style="color:var(--blue-bright)">E você?</span>
         </h2>
         <p class="section-subtitle" style="margin:0 auto 2rem;">
-          Acesse a plataforma gratuitamente e veja os dados climáticos do Brasil
-          em tempo real agora mesmo.
+          Acesse a plataforma gratuitamente e veja os dados climáticos do Brasil em tempo real agora mesmo.
         </p>
-        <a href="pages/dashboard.html" class="btn btn-primary" style="font-size:1rem; padding: 0.875rem 2rem;">
+        <a href="pages/dashboard.html" class="btn btn-primary" style="font-size:1rem;padding:0.875rem 2rem;">
           🛰️ Acessar o Dashboard
         </a>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         FOOTER
-    ══════════════════════════════════════ -->
+    <!-- ══ FOOTER ══ -->
     <footer class="footer">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -323,10 +260,10 @@
         <div class="footer-col">
           <h4>Plataforma</h4>
           <a href="pages/dashboard.html">Dashboard</a>
-          <a href="pages/mapa.html">Mapa Interativo</a>
-          <a href="pages/alertas.html">Alertas</a>
-          <a href="pages/satelites.html">Satélites</a>
-          <a href="pages/relatorios.html">Relatórios</a>
+          <a href="pages/sobre.html">Sobre</a>
+          <a href="pages/integrantes.html">Integrantes</a>
+          <a href="pages/faq.html">FAQ</a>
+          <a href="pages/contato.html">Contato</a>
         </div>
         <div class="footer-col">
           <h4>Dados</h4>
@@ -339,7 +276,7 @@
           <h4>Projeto</h4>
           <a href="#">FIAP Global Solution</a>
           <a href="#">1TDS — 2026</a>
-          <a href="#">Documentação</a>
+          <a href="https://github.com/yasminmatsuok/OrbitalData-" target="_blank">GitHub</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -348,7 +285,7 @@
       </div>
     </footer>
 
-  </div><!-- /page-wrapper -->
+  </div>
 
   <script src="js/main.js"></script>
 </body>
