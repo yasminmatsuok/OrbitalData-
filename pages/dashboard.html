@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — OrbitalData</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+
+  <div class="stars-bg"></div>
+
+  <div class="page-wrapper">
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="../assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
+        <span>Orbital<em>Data</em></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="alertas.html">Alertas</a></li>
+        <li><a href="satelites.html">Satélites</a></li>
+        <li><a href="relatorios.html">Relatórios</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
+        <a href="#" class="btn-nav">Exportar</a>
+      </div>
+    </nav>
+
+    <!-- ══ APP LAYOUT ══ -->
+    <div class="app-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-label">Principal</div>
+          <a href="dashboard.html" class="sidebar-link active">
+            <span class="icon">📊</span> Dashboard
+          </a>
+          <a href="mapa.html" class="sidebar-link">
+            <span class="icon">🗺️</span> Mapa Global
+          </a>
+          <a href="alertas.html" class="sidebar-link">
+            <span class="icon">⚠️</span> Alertas
+            <span class="count">7</span>
+          </a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Dados</div>
+          <a href="satelites.html" class="sidebar-link">
+            <span class="icon">🛰️</span> Satélites
+          </a>
+          <a href="relatorios.html" class="sidebar-link">
+            <span class="icon">📄</span> Relatórios
+          </a>
+          <a href="#" class="sidebar-link">
+            <span class="icon">🌿</span> Carbono
+          </a>
+          <a href="#" class="sidebar-link">
+            <span class="icon">🔥</span> Queimadas
+          </a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Configurações</div>
+          <a href="#" class="sidebar-link">
+            <span class="icon">🔔</span> Notificações
+          </a>
+          <a href="#" class="sidebar-link">
+            <span class="icon">⚙️</span> Preferências
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main-content">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1>Dashboard</h1>
+            <p>Visão geral do monitoramento climático em tempo real</p>
+          </div>
+          <div class="page-header-actions">
+            <span class="timestamp" id="last-update">Atualizado: --:--:-- UTC</span>
+            <button class="btn btn-ghost btn-sm">🔄 Atualizar</button>
+            <button class="btn btn-primary btn-sm">📥 Exportar</button>
+          </div>
+        </div>
+
+        <!-- Live ticker -->
+        <div class="live-ticker">
+          <div class="ticker-label">
+            <span class="dot" style="width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse-dot 2s infinite;"></span>
+            LIVE
+          </div>
+          <div class="ticker-items" id="ticker">
+            <div class="ticker-item">CO₂ Global <span class="val">421.3 ppm</span> <span class="up">▲ 0.2</span></div>
+            <div class="ticker-item">Temp. Amazônia <span class="val">34.2°C</span> <span class="dn">▼ 0.8</span></div>
+            <div class="ticker-item">Queimadas Ativas <span class="val">1.247</span> <span class="up">▲ 12</span></div>
+            <div class="ticker-item">Cobertura Florestal <span class="val">58.4%</span> <span class="dn">▼ 0.1%</span></div>
+            <div class="ticker-item">Sat. Operacionais <span class="val">847</span></div>
+            <div class="ticker-item">CH₄ Atmosférico <span class="val">1.912 ppb</span> <span class="up">▲ 3.1</span></div>
+            <div class="ticker-item">Nível do Mar <span class="val">+3.6 mm/ano</span></div>
+            <div class="ticker-item">Geleiras Árticas <span class="val">-12.4%</span> <span class="dn">▼</span></div>
+            <!-- duplicate for seamless loop -->
+            <div class="ticker-item">CO₂ Global <span class="val">421.3 ppm</span> <span class="up">▲ 0.2</span></div>
+            <div class="ticker-item">Temp. Amazônia <span class="val">34.2°C</span> <span class="dn">▼ 0.8</span></div>
+            <div class="ticker-item">Queimadas Ativas <span class="val">1.247</span> <span class="up">▲ 12</span></div>
+            <div class="ticker-item">Cobertura Florestal <span class="val">58.4%</span> <span class="dn">▼ 0.1%</span></div>
+            <div class="ticker-item">Sat. Operacionais <span class="val">847</span></div>
+            <div class="ticker-item">CH₄ Atmosférico <span class="val">1.912 ppb</span> <span class="up">▲ 3.1</span></div>
+          </div>
+        </div>
+
+        <!-- ── STAT CARDS ── -->
+        <div class="stats-row">
+          <div class="stat-card fade-up delay-1">
+            <div class="stat-label">// CO₂ Atmosférico</div>
+            <div class="stat-value blue">421.3</div>
+            <div class="stat-delta up">▲ +2.1 ppm este ano</div>
+            <div style="margin-top:0.75rem;">
+              <div class="sparkline" id="spark-co2"></div>
+            </div>
+          </div>
+          <div class="stat-card fade-up delay-2">
+            <div class="stat-label">// Temp. Média Brasil</div>
+            <div class="stat-value red">+1.8°C</div>
+            <div class="stat-delta down">▼ acima da média histórica</div>
+            <div style="margin-top:0.75rem;">
+              <div class="sparkline" id="spark-temp"></div>
+            </div>
+          </div>
+          <div class="stat-card fade-up delay-3">
+            <div class="stat-label">// Queimadas Ativas</div>
+            <div class="stat-value amber">1.247</div>
+            <div class="stat-delta up">▲ +12 nas últimas 24h</div>
+            <div style="margin-top:0.75rem;">
+              <div class="sparkline" id="spark-fire"></div>
+            </div>
+          </div>
+          <div class="stat-card fade-up delay-4">
+            <div class="stat-label">// Floresta Preservada</div>
+            <div class="stat-value green">58.4%</div>
+            <div class="stat-delta down">▼ -0.3% este mês</div>
+            <div style="margin-top:0.75rem;">
+              <div class="sparkline" id="spark-forest"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── MAIN CHARTS ROW ── -->
+        <div class="dash-grid">
+
+          <!-- CO2 linha do tempo -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Concentração de CO₂ — 12 meses</div>
+              <div class="chart-card-actions">
+                <span class="badge badge-blue">PPM</span>
+                <button class="btn-icon btn-sm">⬇</button>
+              </div>
+            </div>
+            <div class="chart-card-body">
+              <svg class="svg-chart" viewBox="0 0 600 180" id="co2-chart"></svg>
+              <div style="display:flex;gap:1.5rem;margin-top:0.75rem;">
+                <div style="display:flex;align-items:center;gap:0.4rem;">
+                  <div style="width:20px;height:2px;background:var(--blue-bright);border-radius:2px;"></div>
+                  <span class="timestamp">CO₂ (ppm)</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.4rem;">
+                  <div style="width:20px;height:2px;background:var(--green);border-radius:2px;border-top:2px dashed var(--green);"></div>
+                  <span class="timestamp">Meta 2030</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alertas recentes -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Alertas Recentes</div>
+              <a href="alertas.html" class="btn btn-ghost btn-sm">Ver todos</a>
+            </div>
+            <div class="chart-card-body" style="padding:0.75rem;">
+              <div class="alert-feed" id="alert-feed"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── SEGUNDA ROW ── -->
+        <div class="dash-grid-3">
+
+          <!-- Emissões por região -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Emissões por Região</div>
+              <span class="badge badge-navy">MtCO₂</span>
+            </div>
+            <div class="chart-card-body">
+              <div class="region-list" id="region-list"></div>
+            </div>
+          </div>
+
+          <!-- Temperatura mensal bar chart -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Temperatura Mensal</div>
+              <span class="badge badge-blue">°C</span>
+            </div>
+            <div class="chart-card-body" style="padding-top:0.5rem;">
+              <svg class="bar-chart-svg" viewBox="0 0 260 160" id="temp-chart"></svg>
+            </div>
+          </div>
+
+          <!-- Satélites ativos -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Satélites Ativos</div>
+              <span class="badge badge-green">ONLINE</span>
+            </div>
+            <div class="chart-card-body" style="padding:0.75rem;">
+              <div class="sat-list" id="sat-list"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── TERCEIRA ROW ── -->
+        <div class="dash-grid">
+
+          <!-- Queimadas bar chart mensal -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Focos de Queimadas — Últimos 12 meses</div>
+              <span class="badge badge-amber">Focos</span>
+            </div>
+            <div class="chart-card-body">
+              <svg class="svg-chart" viewBox="0 0 600 180" id="fire-chart"></svg>
+            </div>
+          </div>
+
+          <!-- Gauges -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><span>//</span> Índices Críticos</div>
+            </div>
+            <div class="chart-card-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="gauge-wrap">
+                  <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle class="gauge-track" cx="50" cy="50" r="38" stroke-width="8"/>
+                    <circle class="gauge-fill" cx="50" cy="50" r="38"
+                      stroke="var(--red)" stroke-width="8"
+                      stroke-dasharray="178 239"
+                      stroke-dashoffset="60"
+                      transform="rotate(-90 50 50)"/>
+                    <text class="gauge-label-val" x="50" y="54">74%</text>
+                    <text class="gauge-label-sub" x="50" y="67">RISCO CLIMA</text>
+                  </svg>
+                </div>
+                <div class="gauge-wrap">
+                  <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle class="gauge-track" cx="50" cy="50" r="38" stroke-width="8"/>
+                    <circle class="gauge-fill" cx="50" cy="50" r="38"
+                      stroke="var(--blue-bright)" stroke-width="8"
+                      stroke-dasharray="143 239"
+                      stroke-dashoffset="60"
+                      transform="rotate(-90 50 50)"/>
+                    <text class="gauge-label-val" x="50" y="54">60%</text>
+                    <text class="gauge-label-sub" x="50" y="67">COBERTURA</text>
+                  </svg>
+                </div>
+                <div class="gauge-wrap">
+                  <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle class="gauge-track" cx="50" cy="50" r="38" stroke-width="8"/>
+                    <circle class="gauge-fill" cx="50" cy="50" r="38"
+                      stroke="var(--amber)" stroke-width="8"
+                      stroke-dasharray="120 239"
+                      stroke-dashoffset="60"
+                      transform="rotate(-90 50 50)"/>
+                    <text class="gauge-label-val" x="50" y="54">50%</text>
+                    <text class="gauge-label-sub" x="50" y="67">META CO₂</text>
+                  </svg>
+                </div>
+                <div class="gauge-wrap">
+                  <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle class="gauge-track" cx="50" cy="50" r="38" stroke-width="8"/>
+                    <circle class="gauge-fill" cx="50" cy="50" r="38"
+                      stroke="var(--green)" stroke-width="8"
+                      stroke-dasharray="191 239"
+                      stroke-dashoffset="60"
+                      transform="rotate(-90 50 50)"/>
+                    <text class="gauge-label-val" x="50" y="54">80%</text>
+                    <text class="gauge-label-sub" x="50" y="67">SAT ONLINE</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+    </div><!-- /app-layout -->
+  </div><!-- /page-wrapper -->
+
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

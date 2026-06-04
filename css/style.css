@@ -1,0 +1,160 @@
+/* =============================================
+   ORBITALDATA — Base: Variáveis, Reset, Tipografia
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  /* Fundos */
+  --space-black:   #02030a;
+  --deep-navy:     #05071a;
+  --panel:         #080d1e;
+  --panel-mid:     #0c1228;
+  --panel-light:   #111830;
+  --border:        rgba(40, 70, 160, 0.22);
+  --border-glow:   rgba(50, 100, 200, 0.50);
+
+  /* Cores */
+  --blue:          #3a7bd5;
+  --blue-bright:   #5a9ae8;
+  --navy:          #1e2d6b;
+  --galaxy:        #2a3f8f;
+  --green:         #00e5a0;
+  --green-dim:     rgba(0, 229, 160, 0.5);
+  --amber:         #ffb830;
+  --red:           #ff4560;
+
+  /* Texto */
+  --text-primary:  #dce8ff;
+  --text-secondary:#7a93c0;
+  --text-muted:    #3a4e78;
+
+  /* Fontes */
+  --font-display:  'Share Tech Mono', monospace;
+  --font-body:     'Exo 2', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
+
+  /* Misc */
+  --radius:        8px;
+  --radius-lg:     14px;
+  --transition:    0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --glow-blue:     0 0 28px rgba(58, 123, 213, 0.35), 0 0 60px rgba(58, 123, 213, 0.12);
+  --glow-navy:     0 0 28px rgba(30, 45, 107, 0.50), 0 0 60px rgba(30, 45, 107, 0.20);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--space-black);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+ul { list-style: none; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--deep-navy); }
+::-webkit-scrollbar-thumb { background: var(--panel-light); border-radius: 3px; }
+
+/* ── Fundo estrelado ── */
+.stars-bg {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(30, 45, 107, 0.30) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(42, 63, 143, 0.20) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(10, 15, 50, 0.5) 0%, transparent 70%),
+    var(--space-black);
+  pointer-events: none;
+}
+.stars-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 8%  12%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 38%, rgba(200,220,255,0.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 58% 6%, rgba(180,200,255,0.85) 0%, transparent 100%),
+    radial-gradient(1px 1px at 73% 52%, rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 22%, rgba(200,210,255,0.60) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 68%, rgba(255,255,255,0.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 4% 83%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(1px 1px at 33% 93%, rgba(200,210,255,0.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 83% 72%, rgba(255,255,255,0.60) 0%, transparent 100%),
+    radial-gradient(1px 1px at 16% 58%, rgba(200,210,255,0.55) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 68% 88%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(1px 1px at 29% 18%, rgba(255,255,255,0.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 94% 48%, rgba(200,210,255,0.60) 0%, transparent 100%),
+    radial-gradient(1px 1px at 77% 33%, rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 37% 77%, rgba(200,210,255,0.50) 0%, transparent 100%);
+}
+
+/* ── Layout ── */
+.page-wrapper  { position: relative; z-index: 1; }
+.app-layout    { display: flex; min-height: 100vh; }
+.main-content  { flex: 1; min-width: 0; padding: 1.5rem; padding-top: calc(64px + 1.5rem); }
+
+/* ── Grid helpers ── */
+.grid-2    { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.grid-3    { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.grid-4    { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+
+/* ── Animações ── */
+.fade-in { animation: fadeIn 0.6s ease forwards; }
+.fade-up { animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+@keyframes fadeIn { from { opacity: 0; }             to { opacity: 1; transform: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ── Utilidades ── */
+.mono           { font-family: var(--font-mono); }
+.text-blue      { color: var(--blue); }
+.text-bright    { color: var(--blue-bright); }
+.text-green     { color: var(--green); }
+.text-amber     { color: var(--amber); }
+.text-red       { color: var(--red); }
+.text-muted     { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-sm        { font-size: 0.85rem; }
+.text-xs        { font-size: 0.73rem; }
+.font-bold      { font-weight: 700; }
+.font-display   { font-family: var(--font-display); }
+.uppercase      { text-transform: uppercase; letter-spacing: 0.08em; }
+.mb-05 { margin-bottom: 0.5rem; }
+.mb-1  { margin-bottom: 1rem;   }
+.mb-15 { margin-bottom: 1.5rem; }
+.mb-2  { margin-bottom: 2rem;   }
+.mt-1  { margin-top: 1rem;      }
+.mt-2  { margin-top: 2rem;      }
+.flex            { display: flex; }
+.items-center    { align-items: center; }
+.gap-05          { gap: 0.5rem; }
+.gap-1           { gap: 1rem;   }
+.gap-15          { gap: 1.5rem; }
+.justify-between { justify-content: space-between; }
+.w-full          { width: 100%; }
+.relative        { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.text-center     { text-align: center; }
+
+/* ── Responsivo base ── */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .main-content { padding: 1rem; padding-top: calc(64px + 1rem); }
+}

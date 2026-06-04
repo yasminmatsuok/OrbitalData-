@@ -1,0 +1,89 @@
+/* =============================================
+   ORBITALDATA — Navbar
+   ============================================= */
+
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(2, 3, 10, 0.90);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.nav-logo img.logo-img {
+  width: 28px; height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(58, 123, 213, 0.7));
+}
+.nav-logo span {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+.nav-logo span em {
+  background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 0.1rem;
+}
+.nav-links a {
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  border-radius: var(--radius);
+  transition: color var(--transition), background var(--transition);
+}
+.nav-links a:hover { color: var(--text-primary); background: var(--panel-light); }
+.nav-links a.active { color: var(--blue-bright); background: rgba(58, 123, 213, 0.12); }
+
+.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+.nav-badge {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.28rem 0.75rem;
+  background: rgba(0, 229, 160, 0.07);
+  border: 1px solid rgba(0, 229, 160, 0.22);
+  border-radius: 20px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--green);
+}
+.nav-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,229,160,0.5); }
+  50%       { opacity: 0.5; box-shadow: 0 0 0 5px rgba(0,229,160,0); }
+}
+
+.btn-nav {
+  padding: 0.42rem 1.1rem;
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #fff;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  transition: opacity var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(58,123,213,0.4);
+}
+.btn-nav:hover { opacity: 0.85; box-shadow: var(--glow-blue); }
+
+@media (max-width: 1024px) { .nav-links { display: none; } }

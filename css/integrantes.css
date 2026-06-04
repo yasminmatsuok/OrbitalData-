@@ -1,0 +1,181 @@
+/* =============================================
+   ORBITALDATA — Integrantes
+   ============================================= */
+
+/* ── Page hero ── */
+.integrantes-hero {
+  padding: 7rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+}
+.integrantes-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+/* ── Cards grid ── */
+.integrantes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 3rem auto 0;
+  padding: 0 2rem;
+}
+
+/* ── Card ── */
+.integrante-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  position: relative;
+}
+.integrante-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--navy), var(--blue));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.integrante-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: var(--glow-blue);
+  transform: translateY(-4px);
+}
+.integrante-card:hover::before { opacity: 1; }
+
+/* ── Foto ── */
+.integrante-foto-wrap {
+  position: relative;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+.integrante-foto {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-glow);
+  box-shadow: 0 0 20px rgba(58, 123, 213, 0.2);
+  background: var(--panel-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+}
+.integrante-foto img {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.integrante-status {
+  position: absolute;
+  bottom: 4px; right: calc(50% - 58px);
+  width: 14px; height: 14px;
+  background: var(--green);
+  border-radius: 50%;
+  border: 2px solid var(--panel);
+  box-shadow: 0 0 6px var(--green);
+}
+
+/* ── Info ── */
+.integrante-info {
+  padding: 1.25rem;
+  text-align: center;
+}
+.integrante-nome {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+}
+.integrante-role {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-bright);
+  margin-bottom: 0.75rem;
+}
+.integrante-meta {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.integrante-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.75rem 0;
+}
+.integrante-links {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.integrante-link {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--panel-mid);
+  transition: all var(--transition);
+}
+.integrante-link:hover {
+  border-color: var(--border-glow);
+  color: var(--blue-bright);
+  background: rgba(58, 123, 213, 0.1);
+}
+.integrante-link.github:hover { color: var(--text-primary); }
+.integrante-link.linkedin:hover { color: #5aa0e8; }
+
+/* ── Turma banner ── */
+.turma-banner {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  padding: 0 2rem 4rem;
+}
+.turma-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.turma-item {
+  text-align: center;
+}
+.turma-label {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.turma-val {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .integrantes-grid { grid-template-columns: 1fr; }
+  .turma-card { justify-content: center; text-align: center; }
+}
