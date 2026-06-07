@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa — OrbitalData</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/mapa.css" />
+</head>
+<body>
+
+  <div class="stars-bg"></div>
+
+  <div class="page-wrapper">
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="../assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
+        <span>Orbital<em>Data</em></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="mapa.html" class="active">Mapa</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="integrantes.html">Integrantes</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
+        <a href="dashboard.html" class="btn-nav">Dashboard</a>
+      </div>
+    </nav>
+
+    <!-- ══ MAPA LAYOUT ══ -->
+    <div class="mapa-layout">
+
+      <!-- Sidebar esquerda -->
+      <div class="mapa-sidebar">
+        <div class="mapa-sidebar-header">
+          <div class="mapa-sidebar-title"><span>//</span> Camadas de Dados</div>
+          <div class="mapa-filtro-btns">
+            <button class="filtro-btn active" data-layer="co2">CO₂</button>
+            <button class="filtro-btn" data-layer="temp">Temperatura</button>
+            <button class="filtro-btn" data-layer="fogo">Queimadas</button>
+            <button class="filtro-btn" data-layer="floresta">Floresta</button>
+          </div>
+        </div>
+
+        <div class="mapa-filtros">
+          <div class="mapa-filtro-label">// Período</div>
+          <div class="mapa-filtro-btns">
+            <button class="filtro-btn active">Hoje</button>
+            <button class="filtro-btn">7 dias</button>
+            <button class="filtro-btn">30 dias</button>
+            <button class="filtro-btn">1 ano</button>
+          </div>
+        </div>
+
+        <div class="mapa-regioes">
+          <div class="mapa-filtro-label" style="padding:0 0 0.5rem;">// Biomas</div>
+          <div id="regiao-list"></div>
+        </div>
+      </div>
+
+      <!-- Área central do mapa -->
+      <div class="mapa-area">
+        <div class="mapa-bg-glow"></div>
+
+        <!-- Controles -->
+        <div class="mapa-controles">
+          <div class="mapa-ctrl-btn" title="Zoom in">＋</div>
+          <div class="mapa-ctrl-btn" title="Zoom out">－</div>
+          <div class="mapa-ctrl-btn" title="Resetar">⌖</div>
+          <div class="mapa-ctrl-btn" title="Satélite">🛰️</div>
+        </div>
+
+        <!-- SVG do Brasil simplificado -->
+        <svg class="brasil-svg" viewBox="0 0 500 520" xmlns="http://www.w3.org/2000/svg" id="brasil-map">
+
+          <!-- Regiões do Brasil como polígonos simplificados -->
+
+          <!-- Norte -->
+          <path class="estado nivel-alto" data-estado="Amazonas" data-co2="38.2" data-temp="33.1" data-fogo="412"
+            d="M 80 60 L 200 50 L 230 80 L 250 120 L 220 160 L 180 180 L 140 170 L 100 150 L 70 120 Z"/>
+
+          <path class="estado nivel-critico" data-estado="Pará" data-co2="42.1" data-temp="34.8" data-fogo="687"
+            d="M 230 80 L 320 60 L 350 90 L 340 140 L 300 170 L 250 170 L 220 160 L 250 120 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Roraima" data-co2="28.4" data-temp="31.2" data-fogo="89"
+            d="M 150 20 L 200 10 L 200 50 L 150 60 L 120 50 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Amapá" data-co2="18.2" data-temp="29.8" data-fogo="34"
+            d="M 300 30 L 340 20 L 360 60 L 350 90 L 320 60 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Acre" data-co2="31.5" data-temp="32.4" data-fogo="156"
+            d="M 50 150 L 100 150 L 110 190 L 80 210 L 40 190 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Rondônia" data-co2="35.8" data-temp="33.6" data-fogo="298"
+            d="M 110 170 L 170 170 L 180 210 L 160 240 L 110 230 L 90 200 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Tocantins" data-co2="22.4" data-temp="31.8" data-fogo="112"
+            d="M 290 170 L 340 150 L 360 200 L 340 250 L 300 260 L 270 220 Z"/>
+
+          <!-- Nordeste -->
+          <path class="estado nivel-medio" data-estado="Maranhão" data-co2="29.1" data-temp="32.5" data-fogo="203"
+            d="M 340 90 L 400 80 L 420 120 L 400 160 L 360 170 L 340 140 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Piauí" data-co2="19.8" data-temp="34.2" data-fogo="78"
+            d="M 400 80 L 440 90 L 450 140 L 420 170 L 400 160 L 420 120 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Ceará" data-co2="15.3" data-temp="35.1" data-fogo="42"
+            d="M 440 90 L 470 100 L 468 140 L 450 150 L 450 140 L 440 90 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Rio Grande do Norte" data-co2="12.1" data-temp="34.8" data-fogo="28"
+            d="M 468 100 L 490 110 L 488 130 L 470 135 L 468 140 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Paraíba" data-co2="11.4" data-temp="34.5" data-fogo="22"
+            d="M 468 140 L 488 135 L 486 155 L 466 158 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Pernambuco" data-co2="16.7" data-temp="34.2" data-fogo="35"
+            d="M 420 170 L 468 158 L 470 175 L 445 185 L 420 180 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Bahia" data-co2="27.3" data-temp="33.8" data-fogo="189"
+            d="M 360 170 L 420 170 L 445 185 L 440 260 L 400 290 L 360 280 L 340 250 L 360 200 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Sergipe" data-co2="10.2" data-temp="33.1" data-fogo="18"
+            d="M 445 185 L 465 188 L 462 205 L 445 202 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Alagoas" data-co2="9.8" data-temp="33.4" data-fogo="15"
+            d="M 465 175 L 480 178 L 478 192 L 462 190 Z"/>
+
+          <!-- Centro-Oeste -->
+          <path class="estado nivel-alto" data-estado="Mato Grosso" data-co2="44.8" data-temp="34.2" data-fogo="521"
+            d="M 160 210 L 270 220 L 300 260 L 280 310 L 230 330 L 170 310 L 150 270 L 160 240 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Mato Grosso do Sul" data-co2="26.1" data-temp="32.1" data-fogo="134"
+            d="M 190 330 L 280 320 L 300 370 L 260 400 L 200 390 L 170 360 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Goiás" data-co2="24.5" data-temp="32.8" data-fogo="147"
+            d="M 300 260 L 360 260 L 380 300 L 360 340 L 300 340 L 280 310 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Distrito Federal" data-co2="8.4" data-temp="28.5" data-fogo="12"
+            d="M 330 295 L 345 295 L 345 310 L 330 310 Z"/>
+
+          <!-- Sudeste -->
+          <path class="estado nivel-medio" data-estado="Minas Gerais" data-co2="31.2" data-temp="30.4" data-fogo="98"
+            d="M 360 280 L 420 270 L 440 310 L 420 360 L 370 370 L 340 350 L 340 310 L 360 290 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Espírito Santo" data-co2="14.8" data-temp="29.8" data-fogo="31"
+            d="M 420 290 L 450 295 L 448 330 L 430 335 L 420 310 Z"/>
+
+          <path class="estado nivel-medio" data-estado="Rio de Janeiro" data-co2="22.6" data-temp="30.2" data-fogo="44"
+            d="M 390 360 L 430 350 L 445 370 L 420 385 L 390 378 Z"/>
+
+          <path class="estado nivel-medio" data-estado="São Paulo" data-co2="29.8" data-temp="28.9" data-fogo="76"
+            d="M 280 360 L 370 355 L 390 378 L 370 410 L 300 415 L 265 395 Z"/>
+
+          <!-- Sul -->
+          <path class="estado nivel-baixo" data-estado="Paraná" data-co2="18.4" data-temp="26.5" data-fogo="45"
+            d="M 260 410 L 370 408 L 375 440 L 310 455 L 255 445 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Santa Catarina" data-co2="14.2" data-temp="24.8" data-fogo="28"
+            d="M 255 450 L 370 445 L 368 468 L 300 475 L 250 468 Z"/>
+
+          <path class="estado nivel-baixo" data-estado="Rio Grande do Sul" data-co2="16.8" data-temp="23.4" data-fogo="35"
+            d="M 245 472 L 365 470 L 358 510 L 290 515 L 240 500 Z"/>
+
+        </svg>
+
+        <!-- Tooltip -->
+        <div class="mapa-tooltip" id="mapa-tooltip">
+          <div class="tooltip-estado" id="tt-estado">—</div>
+          <div class="tooltip-row"><span>CO₂</span><span id="tt-co2">—</span></div>
+          <div class="tooltip-row"><span>Temperatura</span><span id="tt-temp">—</span></div>
+          <div class="tooltip-row"><span>Focos de fogo</span><span id="tt-fogo">—</span></div>
+          <div class="tooltip-row"><span>Nível</span><span id="tt-nivel">—</span></div>
+        </div>
+
+        <!-- Legenda -->
+        <div class="mapa-legenda">
+          <div class="legenda-title">// Nível de emissão</div>
+          <div class="legenda-item">
+            <div class="legenda-dot" style="background:rgba(0,229,160,0.5);border:1px solid rgba(0,229,160,0.6);"></div>
+            Baixo
+          </div>
+          <div class="legenda-item">
+            <div class="legenda-dot" style="background:rgba(255,184,48,0.5);border:1px solid rgba(255,184,48,0.6);"></div>
+            Médio
+          </div>
+          <div class="legenda-item">
+            <div class="legenda-dot" style="background:rgba(255,69,96,0.4);border:1px solid rgba(255,69,96,0.6);"></div>
+            Alto
+          </div>
+          <div class="legenda-item">
+            <div class="legenda-dot" style="background:rgba(255,69,96,0.7);border:1px solid rgba(255,69,96,0.9);"></div>
+            Crítico
+          </div>
+        </div>
+
+        <!-- Info chips -->
+        <div class="mapa-infobar">
+          <div class="mapa-info-chip">Camada: <span id="camada-ativa">CO₂</span></div>
+          <div class="mapa-info-chip">Sat: <span style="color:var(--green)">SENTINEL-5P</span></div>
+          <div class="mapa-info-chip" id="mapa-hora">UTC: --:--</div>
+        </div>
+      </div>
+
+      <!-- Painel direito de detalhes -->
+      <div class="mapa-detalhes">
+        <div class="mapa-detalhes-title">// Detalhes da Região</div>
+
+        <div id="detalhe-placeholder" style="text-align:center;padding:2rem 0;color:var(--text-muted);font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.1em;">
+          Clique em um estado para ver detalhes
+        </div>
+
+        <div id="detalhe-content" style="display:none;">
+          <div class="detalhe-card">
+            <div class="detalhe-label">// Estado</div>
+            <div class="detalhe-val" id="det-nome">—</div>
+          </div>
+          <div class="detalhe-card">
+            <div class="detalhe-label">// CO₂ (MtCO₂)</div>
+            <div class="detalhe-val" id="det-co2">—</div>
+            <div class="detalhe-sub">Emissões mensais estimadas</div>
+          </div>
+          <div class="detalhe-card">
+            <div class="detalhe-label">// Temperatura Média</div>
+            <div class="detalhe-val" id="det-temp">—</div>
+            <div class="detalhe-sub">Média mensal via satélite</div>
+          </div>
+          <div class="detalhe-card">
+            <div class="detalhe-label">// Focos de Fogo</div>
+            <div class="detalhe-val" id="det-fogo">—</div>
+            <div class="detalhe-sub">Detectados nos últimos 30 dias</div>
+          </div>
+          <div class="detalhe-card">
+            <div class="detalhe-label">// Nível de Risco</div>
+            <div class="detalhe-val" id="det-nivel">—</div>
+          </div>
+          <div style="margin-top:0.75rem;">
+            <a href="alertas.html" class="btn btn-secondary btn-sm w-full" style="justify-content:center;">
+              Ver alertas desta região
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /mapa-layout -->
+
+  </div><!-- /page-wrapper -->
+
+  <script src="../js/main.js"></script>
+  <script src="../js/mapa.js"></script>
+</body>
+</html>
