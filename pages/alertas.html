@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alertas — OrbitalData</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/alertas.css" />
+</head>
+<body>
+
+  <div class="stars-bg"></div>
+
+  <div class="page-wrapper">
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="../assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
+        <span>Orbital<em>Data</em></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="alertas.html" class="active">Alertas</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="integrantes.html">Integrantes</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
+        <a href="dashboard.html" class="btn-nav">Dashboard</a>
+      </div>
+    </nav>
+
+    <!-- ══ APP LAYOUT ══ -->
+    <div class="app-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-label">Principal</div>
+          <a href="dashboard.html" class="sidebar-link"><span class="icon">📊</span> Dashboard</a>
+          <a href="mapa.html" class="sidebar-link"><span class="icon">🗺️</span> Mapa Global</a>
+          <a href="alertas.html" class="sidebar-link active"><span class="icon">⚠️</span> Alertas <span class="count">7</span></a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Dados</div>
+          <a href="satelites.html" class="sidebar-link"><span class="icon">🛰️</span> Satélites</a>
+          <a href="relatorios.html" class="sidebar-link"><span class="icon">📄</span> Relatórios</a>
+          <a href="#" class="sidebar-link"><span class="icon">🌿</span> Carbono</a>
+          <a href="#" class="sidebar-link"><span class="icon">🔥</span> Queimadas</a>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main-content">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1>Central de Alertas</h1>
+            <p>Monitoramento em tempo real de eventos climáticos críticos</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-ghost btn-sm">🔕 Silenciar</button>
+            <button class="btn btn-primary btn-sm">📥 Exportar</button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="alertas-stats">
+          <div class="stat-card">
+            <div class="stat-label">// Críticos</div>
+            <div class="stat-value red" id="count-critico">3</div>
+            <div class="stat-delta down">▲ +1 nas últimas 6h</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">// Alto Risco</div>
+            <div class="stat-value amber" id="count-alto">8</div>
+            <div class="stat-delta down">▲ +3 hoje</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">// Moderados</div>
+            <div class="stat-value blue" id="count-medio">14</div>
+            <div class="stat-delta">→ estável</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">// Resolvidos hoje</div>
+            <div class="stat-value green" id="count-resolvido">22</div>
+            <div class="stat-delta up">✓ monitorados</div>
+          </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="alertas-filtros">
+          <div class="alertas-search">
+            <span>🔍</span>
+            <input type="text" id="alerta-search" placeholder="Buscar alertas..." />
+          </div>
+          <select class="filtro-select" id="filtro-nivel">
+            <option value="todos">Todos os níveis</option>
+            <option value="critico">Crítico</option>
+            <option value="alto">Alto</option>
+            <option value="medio">Médio</option>
+            <option value="baixo">Baixo</option>
+          </select>
+          <select class="filtro-select" id="filtro-tipo">
+            <option value="todos">Todos os tipos</option>
+            <option value="fogo">Queimada</option>
+            <option value="co2">CO₂</option>
+            <option value="temp">Temperatura</option>
+            <option value="floresta">Desmatamento</option>
+          </select>
+          <select class="filtro-select" id="filtro-periodo">
+            <option value="hoje">Hoje</option>
+            <option value="7dias">Últimos 7 dias</option>
+            <option value="30dias">Últimos 30 dias</option>
+          </select>
+        </div>
+
+        <!-- Grid -->
+        <div class="alertas-grid">
+
+          <!-- Lista -->
+          <div>
+            <div class="alertas-lista" id="alertas-lista"></div>
+            <div class="alertas-pag">
+              <button class="pag-btn">‹</button>
+              <button class="pag-btn active">1</button>
+              <button class="pag-btn">2</button>
+              <button class="pag-btn">3</button>
+              <button class="pag-btn">›</button>
+            </div>
+          </div>
+
+          <!-- Resumo lateral -->
+          <div class="alertas-resumo">
+
+            <!-- Distribuição por nível -->
+            <div class="resumo-card">
+              <div class="resumo-header"><span>//</span> Por Nível</div>
+              <div class="resumo-body">
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label" style="color:var(--red)">Crítico</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:20%;background:var(--red);"></div></div>
+                  <span class="nivel-bar-count">3</span>
+                </div>
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label" style="color:var(--amber)">Alto</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:53%;background:var(--amber);"></div></div>
+                  <span class="nivel-bar-count">8</span>
+                </div>
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label" style="color:var(--blue-bright)">Médio</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:80%;background:var(--blue-bright);"></div></div>
+                  <span class="nivel-bar-count">14</span>
+                </div>
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label" style="color:var(--green)">Baixo</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:40%;background:var(--green);"></div></div>
+                  <span class="nivel-bar-count">6</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline recente -->
+            <div class="resumo-card">
+              <div class="resumo-header"><span>//</span> Últimas Ocorrências</div>
+              <div class="timeline-feed">
+                <div class="tl-item">
+                  <div class="tl-dot" style="background:var(--red);box-shadow:0 0 6px var(--red);"></div>
+                  <div class="tl-content">
+                    <div class="tl-title">Foco crítico — Pará</div>
+                    <div class="tl-time">Há 4 minutos</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot" style="background:var(--amber);box-shadow:0 0 6px var(--amber);"></div>
+                  <div class="tl-content">
+                    <div class="tl-title">CO₂ elevado — Mato Grosso</div>
+                    <div class="tl-time">Há 18 minutos</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot" style="background:var(--blue-bright);"></div>
+                  <div class="tl-content">
+                    <div class="tl-title">Passagem SENTINEL-5P</div>
+                    <div class="tl-time">Há 32 minutos</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot" style="background:var(--amber);box-shadow:0 0 6px var(--amber);"></div>
+                  <div class="tl-content">
+                    <div class="tl-title">Temp. anômala — Amazônia</div>
+                    <div class="tl-time">Há 47 minutos</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot" style="background:var(--green);"></div>
+                  <div class="tl-content">
+                    <div class="tl-title">Alerta resolvido — Rondônia</div>
+                    <div class="tl-time">Há 1 hora</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Regiões mais afetadas -->
+            <div class="resumo-card">
+              <div class="resumo-header"><span>//</span> Regiões Afetadas</div>
+              <div class="resumo-body">
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label">Pará</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:90%;background:var(--red);"></div></div>
+                  <span class="nivel-bar-count">9</span>
+                </div>
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label">MT</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:70%;background:var(--amber);"></div></div>
+                  <span class="nivel-bar-count">7</span>
+                </div>
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label">AM</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:50%;background:var(--amber);"></div></div>
+                  <span class="nivel-bar-count">5</span>
+                </div>
+                <div class="nivel-bar-item">
+                  <span class="nivel-bar-label">RO</span>
+                  <div class="nivel-bar-track"><div class="nivel-bar-fill" style="width:30%;background:var(--blue-bright);"></div></div>
+                  <span class="nivel-bar-count">3</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/alertas.js"></script>
+</body>
+</html>

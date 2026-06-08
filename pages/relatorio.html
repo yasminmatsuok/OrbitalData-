@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatórios — OrbitalData</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/relatorios.css" />
+</head>
+<body>
+
+  <div class="stars-bg"></div>
+  <div class="page-wrapper">
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="../assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
+        <span>Orbital<em>Data</em></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="mapa.html">Mapa</a></li>
+        <li><a href="alertas.html">Alertas</a></li>
+        <li><a href="satelites.html">Satélites</a></li>
+        <li><a href="relatorios.html" class="active">Relatórios</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="integrantes.html">Integrantes</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
+        <a href="dashboard.html" class="btn-nav">Dashboard</a>
+      </div>
+    </nav>
+
+    <!-- ══ APP LAYOUT ══ -->
+    <div class="app-layout">
+
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-label">Principal</div>
+          <a href="dashboard.html" class="sidebar-link"><span class="icon">📊</span> Dashboard</a>
+          <a href="mapa.html" class="sidebar-link"><span class="icon">🗺️</span> Mapa Global</a>
+          <a href="alertas.html" class="sidebar-link"><span class="icon">⚠️</span> Alertas <span class="count">7</span></a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Dados</div>
+          <a href="satelites.html" class="sidebar-link"><span class="icon">🛰️</span> Satélites</a>
+          <a href="relatorios.html" class="sidebar-link active"><span class="icon">📄</span> Relatórios</a>
+          <a href="#" class="sidebar-link"><span class="icon">🌿</span> Carbono</a>
+          <a href="#" class="sidebar-link"><span class="icon">🔥</span> Queimadas</a>
+        </div>
+      </aside>
+
+      <main class="main-content">
+
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1>Relatórios</h1>
+            <p>Gere e exporte relatórios climáticos baseados em dados satelitais</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-ghost btn-sm">📋 Histórico</button>
+            <button class="btn btn-primary btn-sm" id="btn-gerar-topo">📥 Gerar Relatório</button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="rel-stats">
+          <div class="stat-card">
+            <div class="stat-label">// Gerados este mês</div>
+            <div class="stat-value blue">48</div>
+            <div class="stat-delta up">▲ +12 vs mês anterior</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">// Downloads</div>
+            <div class="stat-value green">312</div>
+            <div class="stat-delta up">▲ +28% este mês</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">// Regiões cobertas</div>
+            <div class="stat-value blue">27</div>
+            <div class="stat-delta">→ todos os estados BR</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">// Último gerado</div>
+            <div class="stat-value green" style="font-size:1.4rem;">Hoje</div>
+            <div class="stat-delta up">14:32 UTC</div>
+          </div>
+        </div>
+
+        <div class="rel-grid">
+          <div>
+
+            <!-- Gerador -->
+            <div class="rel-gerador">
+              <div class="rel-gerador-header">
+                <div class="rel-gerador-title"><span>//</span> Gerar Novo Relatório</div>
+                <span class="badge badge-blue">Configurar</span>
+              </div>
+              <div class="rel-gerador-body">
+
+                <!-- Tipo -->
+                <div style="grid-column:1/-1;">
+                  <div class="rel-label" style="margin-bottom:0.6rem;">Tipo de Relatório</div>
+                  <div class="rel-tipo-grid" id="tipo-grid">
+                    <div class="rel-tipo-btn active" data-tipo="carbono">
+                      <div class="rel-tipo-icon">🌿</div>
+                      <div class="rel-tipo-label">Carbono & CO₂</div>
+                    </div>
+                    <div class="rel-tipo-btn" data-tipo="queimadas">
+                      <div class="rel-tipo-icon">🔥</div>
+                      <div class="rel-tipo-label">Queimadas</div>
+                    </div>
+                    <div class="rel-tipo-btn" data-tipo="temperatura">
+                      <div class="rel-tipo-icon">🌡️</div>
+                      <div class="rel-tipo-label">Temperatura</div>
+                    </div>
+                    <div class="rel-tipo-btn" data-tipo="floresta">
+                      <div class="rel-tipo-icon">🌳</div>
+                      <div class="rel-tipo-label">Desmatamento</div>
+                    </div>
+                    <div class="rel-tipo-btn" data-tipo="esg">
+                      <div class="rel-tipo-icon">📋</div>
+                      <div class="rel-tipo-label">ESG Compliance</div>
+                    </div>
+                    <div class="rel-tipo-btn" data-tipo="completo">
+                      <div class="rel-tipo-icon">📊</div>
+                      <div class="rel-tipo-label">Relatório Completo</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Região -->
+                <div class="rel-field">
+                  <label class="rel-label">Região</label>
+                  <select class="rel-select" id="rel-regiao">
+                    <option value="brasil">Brasil — Nacional</option>
+                    <option value="amazonia">Amazônia</option>
+                    <option value="cerrado">Cerrado</option>
+                    <option value="nordeste">Nordeste</option>
+                    <option value="sudeste">Sudeste</option>
+                    <option value="sul">Sul</option>
+                    <option value="pantanal">Pantanal</option>
+                  </select>
+                </div>
+
+                <!-- Período -->
+                <div class="rel-field">
+                  <label class="rel-label">Período</label>
+                  <select class="rel-select" id="rel-periodo">
+                    <option value="7d">Últimos 7 dias</option>
+                    <option value="30d" selected>Últimos 30 dias</option>
+                    <option value="90d">Últimos 3 meses</option>
+                    <option value="12m">Últimos 12 meses</option>
+                    <option value="custom">Personalizado</option>
+                  </select>
+                </div>
+
+                <!-- Satélite -->
+                <div class="rel-field">
+                  <label class="rel-label">Fonte de dados</label>
+                  <select class="rel-select" id="rel-sat">
+                    <option value="todos">Todos os satélites</option>
+                    <option value="nasa">NASA (Aqua + Terra)</option>
+                    <option value="esa">ESA (Sentinel)</option>
+                    <option value="inpe">INPE (Amazonia-1)</option>
+                  </select>
+                </div>
+
+                <!-- Formato e botão gerar -->
+                <div class="rel-gerar-row">
+                  <div>
+                    <div class="rel-label" style="margin-bottom:0.4rem;">Formato de exportação</div>
+                    <div class="rel-formatos">
+                      <button class="formato-btn active" data-fmt="PDF">📄 PDF</button>
+                      <button class="formato-btn" data-fmt="CSV">📊 CSV</button>
+                      <button class="formato-btn" data-fmt="JSON">{ } JSON</button>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" id="btn-gerar">
+                    ⚙️ Gerar Relatório
+                  </button>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="rel-progress-wrap" id="rel-progress" style="grid-column:1/-1;">
+                  <div class="rel-progress-bar">
+                    <div class="rel-progress-fill" id="rel-progress-fill"></div>
+                  </div>
+                  <div class="rel-progress-label" id="rel-progress-label">Inicializando...</div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Lista de relatórios gerados -->
+            <div class="rel-lista-wrap">
+              <div class="rel-lista-header">
+                <div class="rel-lista-title"><span>//</span> Relatórios Recentes</div>
+                <span class="badge badge-navy">48 este mês</span>
+              </div>
+              <div id="rel-lista"></div>
+            </div>
+
+          </div>
+
+          <!-- Painel lateral -->
+          <div class="rel-painel">
+
+            <!-- Resumo de uso -->
+            <div class="rel-painel-card">
+              <div class="rel-painel-header"><span>//</span> Uso do Período</div>
+              <div class="rel-painel-body">
+                <div class="rel-stat-row">
+                  <span>Relatórios PDF</span>
+                  <span>31</span>
+                </div>
+                <div class="rel-stat-row">
+                  <span>Exportações CSV</span>
+                  <span>12</span>
+                </div>
+                <div class="rel-stat-row">
+                  <span>Exportações JSON</span>
+                  <span>5</span>
+                </div>
+                <div class="rel-stat-row">
+                  <span>Total de dados</span>
+                  <span>2.4 GB</span>
+                </div>
+                <div class="rel-stat-row">
+                  <span>Região mais buscada</span>
+                  <span>Amazônia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tipos mais gerados -->
+            <div class="rel-painel-card">
+              <div class="rel-painel-header"><span>//</span> Por Tipo</div>
+              <div class="rel-painel-body">
+                <div class="nivel-bar-item" style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.65rem;">
+                  <span style="font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.06em;width:75px;flex-shrink:0;">Carbono</span>
+                  <div class="progress-bar-wrap" style="flex:1;"><div class="progress-bar-fill green" style="width:75%;"></div></div>
+                  <span style="font-family:var(--font-display);font-size:0.65rem;color:var(--text-muted);">18</span>
+                </div>
+                <div class="nivel-bar-item" style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.65rem;">
+                  <span style="font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.06em;width:75px;flex-shrink:0;">Queimadas</span>
+                  <div class="progress-bar-wrap" style="flex:1;"><div class="progress-bar-fill" style="width:55%;background:var(--red);"></div></div>
+                  <span style="font-family:var(--font-display);font-size:0.65rem;color:var(--text-muted);">13</span>
+                </div>
+                <div class="nivel-bar-item" style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.65rem;">
+                  <span style="font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.06em;width:75px;flex-shrink:0;">ESG</span>
+                  <div class="progress-bar-wrap" style="flex:1;"><div class="progress-bar-fill blue" style="width:35%;"></div></div>
+                  <span style="font-family:var(--font-display);font-size:0.65rem;color:var(--text-muted);">9</span>
+                </div>
+                <div class="nivel-bar-item" style="display:flex;align-items:center;gap:0.6rem;">
+                  <span style="font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.06em;width:75px;flex-shrink:0;">Temp.</span>
+                  <div class="progress-bar-wrap" style="flex:1;"><div class="progress-bar-fill" style="width:25%;background:var(--amber);"></div></div>
+                  <span style="font-family:var(--font-display);font-size:0.65rem;color:var(--text-muted);">8</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dicas -->
+            <div class="rel-painel-card">
+              <div class="rel-painel-header"><span>//</span> Dicas de Uso</div>
+              <div class="rel-painel-body" style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.6;">
+                  💡 Use o formato <strong style="color:var(--text-primary);">CSV</strong> para importar dados no Excel ou Google Sheets.
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.6;">
+                  📋 Relatórios <strong style="color:var(--text-primary);">ESG</strong> seguem o padrão GRI para comprovação de metas de carbono.
+                </div>
+                <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.6;">
+                  🛰️ Dados com intervalo de <strong style="color:var(--text-primary);">12 meses</strong> têm maior precisão por cobrir sazonalidade completa.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/relatorios.js"></script>
+</body>
+</html>
