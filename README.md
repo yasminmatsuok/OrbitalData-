@@ -116,7 +116,7 @@ Projeto desenvolvido por estudantes do curso de **Tecnologia da Informação** d
 
 Para dúvidas, sugestões ou parcerias:
 
-- 📧 E-mail: contato@orbitaldata.com.br
+- 📧 E-mail: astrodata.fiap@gmail.com
 - 🐙 GitHub: [github.com/yasminmatsuok/OrbitalData-](https://github.com/yasminmatsuok/OrbitalData-)
 - 🏫 Instituição: FIAP — São Paulo, SP
 
