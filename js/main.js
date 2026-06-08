@@ -1,13 +1,12 @@
 // =============================================
 //  OrbitalData — main.js
-//  Interações globais da plataforma
 // =============================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // ── Marca link ativo na navbar ──
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  document.querySelectorAll('.nav-links a, .nav-mobile-menu a').forEach(link => {
     const linkPage = link.getAttribute('href').split('/').pop();
     if (linkPage === currentPage) {
       link.classList.add('active');
@@ -16,7 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Animação de entrada dos elementos ──
+  // ── Menu mobile ──
+  const hamburger  = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Fecha ao clicar num link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Fecha ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
+
+  // ── Animação fade-up ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -33,29 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // ── Tabs (usado nas páginas internas) ──
+  // ── Tabs ──
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const group = btn.closest('.tab-group');
+      const group  = btn.closest('.tab-group');
       const target = btn.dataset.tab;
-
       group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       group.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
       btn.classList.add('active');
       const content = group.querySelector(`[data-tab-content="${target}"]`);
       if (content) content.classList.add('active');
     });
   });
 
-  // ── Relógio UTC no badge "AO VIVO" ──
-  const badge = document.querySelector('.nav-badge');
-  if (badge) {
-    setInterval(() => {
-      const now = new Date();
-      const utc = now.toUTCString().split(' ')[4];
-      badge.innerHTML = `<span class="dot"></span> AO VIVO ${utc} UTC`;
-    }, 1000);
+  // ── Relógio UTC no badge ──
+  function updateBadge() {
+    const utc   = new Date().toUTCString().split(' ')[4];
+    const badge = document.querySelector('.nav-badge');
+    if (badge) badge.innerHTML = `<span class="dot"></span> AO VIVO ${utc} UTC`;
   }
+  updateBadge();
+  setInterval(updateBadge, 1000);
 
 });

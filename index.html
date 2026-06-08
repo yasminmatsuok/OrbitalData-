@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AstroData — Análise Climática via Satélite</title>
+  <title>OrbitalData — Análise Climática via Satélite</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
@@ -19,7 +19,7 @@
     <nav class="navbar">
       <div class="nav-logo">
         <img src="assets/orbitaldata.png" class="logo-img" alt="OrbitalData" />
-        <span>Astro<em>Data</em></span>
+        <span>Orbital<em>Data</em></span>
       </div>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Início</a></li>
@@ -33,7 +33,26 @@
         <div class="nav-badge"><span class="dot"></span> AO VIVO</div>
         <a href="pages/dashboard.html" class="btn-nav">Acessar Plataforma</a>
       </div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+    <!-- Menu Mobile -->
+    <div class="nav-mobile-menu" id="nav-mobile-menu">
+      <a href="index.html">Início</a>
+      <a href="pages/dashboard.html">Dashboard</a>
+      <a href="pages/mapa.html">Mapa</a>
+      <a href="pages/alertas.html">Alertas</a>
+      <a href="pages/satelites.html">Satélites</a>
+      <a href="pages/relatorios.html">Relatórios</a>
+      <div class="nav-mobile-divider"></div>
+      <a href="pages/sobre.html">Sobre</a>
+      <a href="pages/integrantes.html">Integrantes</a>
+      <a href="pages/faq.html">FAQ</a>
+      <a href="pages/contato.html">Contato</a>
+      <div class="nav-mobile-divider"></div>
+      <a href="pages/dashboard.html" class="nav-mobile-btn">🛰️ Acessar Plataforma</a>
+    </div>
 
     <!-- ══ HERO ══ -->
     <section class="hero">
@@ -285,21 +304,8 @@
       </div>
     </footer>
 
-  </div> 
+  </div>
 
   <script src="js/main.js"></script>
-   <script>
-    window.watsonAssistantChatOptions = {
-      integrationID: "da29da2b-7a75-4986-a288-9aeac525a84c",
-      region: "https://integrations.us-south.assistant.watson.appdomain.cloud",
-      serviceInstanceID: "d9839a82-0465-406f-931e-29b800e2dcec",
-      onLoad: async (instance) => { await instance.render(); }
-    };
-    setTimeout(function(){
-      const t=document.createElement('script');
-      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-      document.head.appendChild(t);
-    });
-  </script>
 </body>
 </html>
