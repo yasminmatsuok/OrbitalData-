@@ -92,8 +92,8 @@ Projeto desenvolvido por estudantes do curso de **Tecnologia da Informação** d
 | Nome | RM | GitHub | LinkedIn |
 |---|---|---|---|
 | Yasmin de Oliveira Matsuok  | 573083 | [GitHub](#) | [LinkedIn](#) |
-| A preencher | A preencher | [GitHub](#) | [LinkedIn](#) |
-| A preencher | A preencher | [GitHub](#) | [LinkedIn](#) |
+| Vinicius Soares | 573351 | [GitHub](#) | [LinkedIn](#) |
+| Maria Vitoria Carvalho | 570850 | [GitHub](#) | [LinkedIn](#) |
 
 ---
 
